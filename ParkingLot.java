@@ -111,12 +111,13 @@ public class ParkingLot {
         } else if (this.map1.size() > 0) {
             // Print the current status.
             System.out.println("Slot No.\tRegistration No.\tColor");
+            System.out.println("--------\t----------------\t-----");
             Car car;
             for (int i = 1; i <= this.MAX_SIZE; i++) {
                 String key = Integer.toString(i);
                 if (this.map1.containsKey(key)) {
                     car = this.map1.get(key);
-                    System.out.println(i + "\t" + car.regNo + "\t" + car.color);
+                    System.out.println(i + "\t\t" + car.regNo + "\t\t\t" + car.color);
                 }
             }
             System.out.println();
@@ -126,31 +127,7 @@ public class ParkingLot {
         }
     }
    
-    public void getSlotNumbersFromColor(String color) {
-        if (this.MAX_SIZE == 0) {
-            System.out.println("Sorry, parking lot is not created");
-            System.out.println();
-        } else if (this.map3.containsKey(color)) {
-            ArrayList<String> regNoList = this.map3.get(color);
-            ArrayList<Integer> slotList = new ArrayList<Integer>();
-            System.out.println();
-            for (int i=0; i < regNoList.size(); i++) {
-                slotList.add(Integer.valueOf(this.map2.get(regNoList.get(i))));
-            }
-            Collections.sort(slotList);
-            for (int j=0; j < slotList.size(); j++) {
-                if (!(j == slotList.size() - 1)) {
-                    System.out.print(slotList.get(j) + ",");
-                } else {
-                    System.out.print(slotList.get(j));
-                }
-            }
-            System.out.println();
-        } else {
-            System.out.println("Not found");
-            System.out.println();
-        }
-    }
+   
     public void getSlotNumberFromRegNo() {
         String regNo;
         System.out.println("Enter Registration Number of the car:");
@@ -167,7 +144,31 @@ public class ParkingLot {
         }
     }
 }
-
+ // public void getSlotNumbersFromColor(String color) {
+    //     if (this.MAX_SIZE == 0) {
+    //         System.out.println("Sorry, parking lot is not created");
+    //         System.out.println();
+    //     } else if (this.map3.containsKey(color)) {
+    //         ArrayList<String> regNoList = this.map3.get(color);
+    //         ArrayList<Integer> slotList = new ArrayList<Integer>();
+    //         System.out.println();
+    //         for (int i=0; i < regNoList.size(); i++) {
+    //             slotList.add(Integer.valueOf(this.map2.get(regNoList.get(i))));
+    //         }
+    //         Collections.sort(slotList);
+    //         for (int j=0; j < slotList.size(); j++) {
+    //             if (!(j == slotList.size() - 1)) {
+    //                 System.out.print(slotList.get(j) + ",");
+    //             } else {
+    //                 System.out.print(slotList.get(j));
+    //             }
+    //         }
+    //         System.out.println();
+    //     } else {
+    //         System.out.println("Not found");
+    //         System.out.println();
+    //     }
+    // }
  // public void getRegistrationNumbersFromColor(String color) {
     //     if (this.MAX_SIZE == 0) {
     //         System.out.println("Sorry, parking lot is not created");
