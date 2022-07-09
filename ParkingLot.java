@@ -131,12 +131,13 @@ public class ParkingLot {
         else {
             if (this.map1.size() > 0) {
                 System.out.println("Slot No.\tRegistration No.\tColor");
+                System.out.println("--------\t----------------\t-----");
                 Car car;
                 for (int i = 1; i <= this.MAX_SIZE; i++) {
                     String key = Integer.toString(i);
                     if (this.map1.containsKey(key)) {
                         car = this.map1.get(key);
-                        System.out.println(i + "\t" + car.regNo + "\t" + car.color);
+                        System.out.println(i + "\t\t" + car.regNo + "\t\t\t" + car.color);
                     }
                 }
                 System.out.println();
