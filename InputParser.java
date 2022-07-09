@@ -1,6 +1,3 @@
-
-
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.File;
@@ -9,9 +6,7 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-/**
- * Created by prasadus on 26/06/16.
- */
+
 public class InputParser {
     Commands commands;
     static ParkingLot parkingLot;

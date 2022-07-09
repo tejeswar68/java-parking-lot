@@ -1,9 +1,7 @@
-
 import java.util.*;
 
-/**
- * Created by prasadus on 26/06/16.
- */
+import javax.sound.midi.Synthesizer;
+
 public class ParkingLot {
     int MAX_SIZE = 0;
     private class Car {
@@ -25,6 +23,11 @@ public class ParkingLot {
 
 
     public void createParkingLot() {
+        if (this.MAX_SIZE > 0) {
+            System.out.println("Parking Lot is already created.");
+            return;
+        }
+
         System.out.println("Enter capacity of the parking lot");
         Scanner sc  = new Scanner(System.in);
         int lotCount = sc.nextInt();
@@ -54,7 +57,7 @@ public class ParkingLot {
             System.out.println("Sorry, parking lot is full");
             System.out.println();
         } else {
-            Collections.sort(availableSlotList);
+            // Collections.sort(availableSlotList);
             String slot = availableSlotList.get(0).toString();
             Car car = new Car(regNo, color);
             this.map1.put(slot, car);
@@ -93,6 +96,7 @@ public class ParkingLot {
                 }
                 // Add the Lot No. back to available slot list.
                 this.availableSlotList.add(Integer.parseInt(slotNo));
+                Collections.sort(availableSlotList);
                 System.out.println("Slot number " + slotNo + " is free");
                 System.out.println();
             } else {
@@ -108,21 +112,38 @@ public class ParkingLot {
         if (this.MAX_SIZE == 0) {
             System.out.println("Sorry, parking lot is not created");
             System.out.println();
-        } else if (this.map1.size() > 0) {
-            // Print the current status.
-            System.out.println("Slot No.\tRegistration No.\tColor");
-            Car car;
-            for (int i = 1; i <= this.MAX_SIZE; i++) {
-                String key = Integer.toString(i);
-                if (this.map1.containsKey(key)) {
-                    car = this.map1.get(key);
-                    System.out.println(i + "\t" + car.regNo + "\t" + car.color);
-                }
+        } 
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Press");
+        System.out.println("0. For status of available slots");
+        System.out.println("1. For status of occupied slots");
+        int opt = sc.nextInt();
+        if (opt == 0) {
+            System.out.println("Total Capacity : " + this.MAX_SIZE);
+            System.out.println("Number of vacant slots : " + availableSlotList.size());
+            System.out.println("List of vacant slots : ");
+            for (int i = 0; i < availableSlotList.size(); i++) {
+                System.out.print(availableSlotList.get(i) + " ");
             }
             System.out.println();
-        } else {
-            System.out.println("Parking lot is empty");
-            System.out.println();
+        } 
+        else {
+            if (this.map1.size() > 0) {
+                System.out.println("Slot No.\tRegistration No.\tColor");
+                Car car;
+                for (int i = 1; i <= this.MAX_SIZE; i++) {
+                    String key = Integer.toString(i);
+                    if (this.map1.containsKey(key)) {
+                        car = this.map1.get(key);
+                        System.out.println(i + "\t" + car.regNo + "\t" + car.color);
+                    }
+                }
+                System.out.println();
+            } else {
+                System.out.println("Parking lot is empty");
+                System.out.println();
+            }
         }
     }
    
@@ -187,3 +208,5 @@ public class ParkingLot {
     //         System.out.println();
     //     }
     // }
+
+

@@ -1,11 +1,7 @@
-
-
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.HashMap;
-/**
- 1.create parking lot , size;
- */
+
 public class Commands {
     public Map<String, Method> commandsMap;
 
